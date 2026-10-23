@@ -1,0 +1,72 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+
+  --color-navy-950: #0f1a33;
+  --color-navy-900: #1a2b56;
+  --color-navy-800: #243a6e;
+  --color-sky-400: #5b9bd5;
+  --color-sky-300: #7eb3e0;
+  --color-sky-100: #e8f3fb;
+  --color-slate-brand: #707070;
+  --color-cream: #f8fafc;
+  --color-warm: #fff7ed;
+
+  --shadow-soft: 0 24px 48px -12px rgb(26 43 86 / 0.12);
+  --shadow-card: 0 8px 30px -8px rgb(26 43 86 / 0.1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply m-0 min-h-screen bg-cream font-sans text-navy-900 antialiased;
+  }
+
+  ::selection {
+    @apply bg-sky-400/25 text-navy-950;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-navy-900 via-navy-800 to-sky-400 bg-clip-text text-transparent;
+  }
+
+  .orbital-bg {
+    background-image:
+      radial-gradient(circle at 20% 20%, rgb(91 155 213 / 0.18), transparent 45%),
+      radial-gradient(circle at 80% 0%, rgb(26 43 86 / 0.08), transparent 40%),
+      radial-gradient(circle at 100% 80%, rgb(91 155 213 / 0.12), transparent 35%);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 28s linear infinite;
+}
